@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,21 +10,18 @@ public class wavespawner : MonoBehaviour
     public GameObject skull;
     public int time = 1;
     public int wave = 0;
-    public int waveLocationX = UnityEngine.Random.Range(-1, 1);
-    public int waveLocationZ = UnityEngine.Random.Range(-1, 1);
-    public int waveLocationX2 = UnityEngine.Random.Range(-1, 1);
-    public int waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
+    private int waveLocationX;
+    private int waveLocationZ;
+    private int waveLocationX2;
+    private int waveLocationZ2;
 
     // Start is called before the first frame update
     void Start()
     {
-
-
-
-        
-
-
-      
+        waveLocationX = UnityEngine.Random.Range(-1, 1);
+        waveLocationZ = UnityEngine.Random.Range(-1, 1);
+        waveLocationX2 = UnityEngine.Random.Range(-1, 1);
+        waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
     }
     // Update is called once per frame
     void Update()
