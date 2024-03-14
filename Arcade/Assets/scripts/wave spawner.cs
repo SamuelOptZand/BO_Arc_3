@@ -9,8 +9,10 @@ public class wavespawner : MonoBehaviour
     public GameObject skull;
     public int time = 1;
     public int wave = 0;
-    public 
-    private Vector3 waveLocationUnder10 = new Vector3 (0, 0, 0);
+    public int waveLocationX = UnityEngine.Random.Range(-1, 1);
+    public int waveLocationZ = UnityEngine.Random.Range(-1, 1);
+    public int waveLocationX2 = UnityEngine.Random.Range(-1, 1);
+    public int waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +31,15 @@ public class wavespawner : MonoBehaviour
         
 
         amountEnemysSpawned = 5 * wave;
+        
 
-
-        //if(button pressed)
+        //if(button pressed && wave < 10)
         StartCoroutine(spawnUnit());
+        //else
+        
+            amountEnemysSpawned = amountEnemysSpawned / 2;
+            StartCoroutine(spawnUnit2());
+            StartCoroutine(spawnUnit());
 
     }
 
@@ -47,7 +54,7 @@ public class wavespawner : MonoBehaviour
             
             yield return new WaitForSeconds(time);
 
-            Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-1, 1), 0, UnityEngine.Random.Range(-1, 1));
+            Vector3 randomPos = new Vector3(waveLocationX, 0, waveLocationZ);
             Instantiate(skull, randomPos, transform.rotation);
 
             count++;
@@ -56,7 +63,36 @@ public class wavespawner : MonoBehaviour
                 break;
                 
             }
-            wave++;
+            
+        }
+        wave++;
+
+
+    }
+
+    IEnumerator spawnUnit2()
+    {
+
+
+
+        int count = 0;
+        while (true)
+        {
+
+
+            yield return new WaitForSeconds(time);
+
+            Vector3 randomPos = new Vector3(waveLocationX2, 0, waveLocationZ2);
+            Instantiate(skull, randomPos, transform.rotation);
+
+            count++;
+
+            if (count == amountEnemysSpawned)
+            {
+                break;
+
+            }
+
         }
         
 
