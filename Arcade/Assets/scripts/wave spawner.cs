@@ -26,19 +26,8 @@ public class wavespawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         amountEnemysSpawned = 5 * wave;
-        
-
-           //if(button pressed && wave < 10)
-           StartCoroutine(spawnUnit());
-           //else
-        
-           //amountEnemysSpawned = amountEnemysSpawned / 2;
-           // StartCoroutine(spawnUnit2());
-           // StartCoroutine(spawnUnit());
-
+        StartCoroutine(spawnUnit());
     }
 
     IEnumerator spawnUnit() {
@@ -48,8 +37,6 @@ public class wavespawner : MonoBehaviour
         int count = 0;
         while (true)
         {
-
-            
             yield return new WaitForSeconds(time);
 
             Vector3 randomPos = new Vector3(waveLocationX, 0, waveLocationZ);
@@ -60,29 +47,19 @@ public class wavespawner : MonoBehaviour
             if (count == amountEnemysSpawned) {
                 break;
                 
-            }
-            
+            }  
         }
         wave++;
-
-
     }
 
     IEnumerator spawnUnit2()
     {
-
-
-
         int count = 0;
         while (true)
         {
-
-
             yield return new WaitForSeconds(time);
-
             Vector3 randomPos = new Vector3(waveLocationX2, 0, waveLocationZ2);
             Instantiate(skull, randomPos, transform.rotation);
-
             count++;
 
             if (count == amountEnemysSpawned)
@@ -90,10 +67,6 @@ public class wavespawner : MonoBehaviour
                 break;
 
             }
-
         }
-        
-
-
     }
 }

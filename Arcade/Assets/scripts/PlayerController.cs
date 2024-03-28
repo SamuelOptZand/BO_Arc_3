@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
 
 
         //attack and health part
-        PlayerHp = PlayerHp + gamblingScript.UpgrHp;
-        PlayerDmg = PlayerDmg + gamblingScript.UpgrDmg;
+        PlayerHp += gamblingScript.UpgrHp;
+        PlayerDmg += gamblingScript.UpgrDmg;
 
 
 

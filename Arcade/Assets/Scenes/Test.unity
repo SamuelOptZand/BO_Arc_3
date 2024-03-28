@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14952db0d53378c48ab524637deb5d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 849693339}
 --- !u!135 &124189742
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -461,6 +462,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   rotSpeed: 50
+  gambling: {fileID: 0}
+  PlayerHp: 10
+  PlayerDmg: 1
 --- !u!65 &849693342
 BoxCollider:
   m_ObjectHideFlags: 0
