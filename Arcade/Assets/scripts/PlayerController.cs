@@ -1,7 +1,9 @@
+
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+
 public class PlayerController : MonoBehaviour
 {
     private Vector3 moveDirection;
@@ -43,8 +45,8 @@ public class PlayerController : MonoBehaviour
 
 
         //attack and health part
-        PlayerHp += gamblingScript.UpgrHp;
-        PlayerDmg += gamblingScript.UpgrDmg;
+        PlayerHp = PlayerHp + gamblingScript.UpgrHp;
+        PlayerDmg = PlayerDmg + gamblingScript.UpgrDmg;
 
 
 
@@ -56,4 +58,3 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-
