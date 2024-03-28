@@ -31,13 +31,13 @@ public class wavespawner : MonoBehaviour
         amountEnemysSpawned = 5 * wave;
         
 
-        //if(button pressed && wave < 10)
-        StartCoroutine(spawnUnit());
-        //else
+           //if(button pressed && wave < 10)
+           StartCoroutine(spawnUnit());
+           //else
         
-            amountEnemysSpawned = amountEnemysSpawned / 2;
-            StartCoroutine(spawnUnit2());
-            StartCoroutine(spawnUnit());
+           //amountEnemysSpawned = amountEnemysSpawned / 2;
+           // StartCoroutine(spawnUnit2());
+           // StartCoroutine(spawnUnit());
 
     }
 

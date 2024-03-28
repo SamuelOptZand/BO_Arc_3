@@ -6,14 +6,20 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
+
+    
     private GameObject target;
     private Vector3 targetPosition;
+    [SerializeField] private GameObject player;
+    private PlayerController PC;
+
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        PC = player.GetComponent<PlayerController>();
     }
-
+   
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +30,22 @@ public class EnemyAi : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
 
         transform.LookAt(targetPosition);
+
+        
+        
+    }
+
+    private void OnTriggerEnter(Collider other )
+    {
+        Debug.Log("object enter");
+        if (other.gameObject == target)
+        {
+            PC.PlayerHp--;
+            Debug.Log("player health is now" );
+            Debug.Log(PC.PlayerHp);
+            Destroy(gameObject);
+            
+        } 
     }
 }
 
