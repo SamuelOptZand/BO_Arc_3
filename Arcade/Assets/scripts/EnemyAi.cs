@@ -12,12 +12,13 @@ public class EnemyAi : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] private GameObject player;
     private PlayerController PC;
-
+    public int health = 2;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         PC = player.GetComponent<PlayerController>();
+        
     }
    
     // Update is called once per frame
@@ -32,19 +33,22 @@ public class EnemyAi : MonoBehaviour
         transform.LookAt(targetPosition);
 
         
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other )
     {
-        Debug.Log("object enter");
+        //Debug.Log("object enter");
         if (other.gameObject == target)
         {
-            PC.PlayerHp--;
-            Debug.Log("player health is now" );
-            Debug.Log(PC.PlayerHp);
-            Destroy(gameObject);
-            
+            //PC.PlayerHp--;
+            //Debug.Log("player health is now" );
+            //Debug.Log(PC.PlayerHp);
+            //Destroy(gameObject);
+
         } 
     }
 }
