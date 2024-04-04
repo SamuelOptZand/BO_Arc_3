@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private gambaling gamblingScript;
     private EnemyAi doot;
 
-
     public float PlayerHp = 10f;
     public float PlayerDmg = 1f;
     public int time = 1;
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private ConstantForce piew;
+
     void Start()
     {
         doot = skull.GetComponent<EnemyAi>();

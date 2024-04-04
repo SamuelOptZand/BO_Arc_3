@@ -15,7 +15,6 @@ public class wavespawner : MonoBehaviour
     private int waveLocationX2;
     private int waveLocationZ2;
 
-    // Start is called before the first frame update
     void Start()
     {
         waveLocationX = UnityEngine.Random.Range(-1, 1);
@@ -23,18 +22,16 @@ public class wavespawner : MonoBehaviour
         waveLocationX2 = UnityEngine.Random.Range(-1, 1);
         waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
     }
-    // Update is called once per frame
     void Update()
     {
         amountEnemysSpawned = 5 * wave;
         StartCoroutine(spawnUnit());
     }
 
-    IEnumerator spawnUnit() {
+    IEnumerator spawnUnit()
+    {
+    int count = 0;
 
-
-
-        int count = 0;
         while (true)
         {
             yield return new WaitForSeconds(time);
@@ -44,9 +41,9 @@ public class wavespawner : MonoBehaviour
 
             count++;
 
-            if (count == amountEnemysSpawned) {
+            if (count == amountEnemysSpawned) 
+            {
                 break;
-                
             }  
         }
         wave++;
@@ -65,7 +62,6 @@ public class wavespawner : MonoBehaviour
             if (count == amountEnemysSpawned)
             {
                 break;
-
             }
         }
     }

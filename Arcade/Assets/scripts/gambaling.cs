@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class gambaling : MonoBehaviour
 {
-    [SerializeField] public float UpgrHp = 0;
-    [SerializeField] public float UpgrDmg = 0;
+    public float Wallet = 0;
+    public float UpgrHp = 0;
+    public float UpgrDmg = 0;
+
     [SerializeField] private GameObject player;
     private PlayerController PlayerC;
+
+
     void Start()
     {
-        Debug.Log("gambaling has started");
         PlayerC = player.GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.G))
+        if (Input.GetKey(KeyCode.G) && Wallet > 5)
         {
             int ran = UnityEngine.Random.Range(0, 100);
             Debug.Log(ran);
+
             if (ran <= 15)
             {
                 Debug.Log("0-15");
@@ -49,8 +53,10 @@ public class gambaling : MonoBehaviour
                 Debug.Log("95-100");
                 PlayerC.PlayerHp = 0;
             }
-
         }
-
+        else 
+        {
+            Debug.Log("not enough money!!");
+        }
     }
 }
