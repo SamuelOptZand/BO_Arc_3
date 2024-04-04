@@ -25,8 +25,7 @@ public class HpDisplay : MonoBehaviour
     {
         playerHpDis = GetComponent<TMP_Text>();
 
-        // Change the text on the text component.
-        playerHpDis.text = "Some new line of text.";
+        
 
         playerHpDis.text = "Hp: " + PlayerC.PlayerHp;
     }

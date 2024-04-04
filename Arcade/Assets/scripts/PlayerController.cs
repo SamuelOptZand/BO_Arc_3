@@ -11,17 +11,15 @@ public class PlayerController : MonoBehaviour
 {
     private Vector3 moveDirection;
     [SerializeField] private float speed = 50f;
-    [SerializeField] private float rotSpeed = 50f;
-    [SerializeField] private GameObject gambling;
+    public float PlayerHp = 10f;
+    public float PlayerDmg = 1f;
+    private float RotationSpeed = 10f;
     [SerializeField] private GameObject skull;
+    [SerializeField] private GameObject gambling;
     private gambaling gamblingScript;
     private EnemyAi doot;
 
-    public float PlayerHp = 10f;
-    public float PlayerDmg = 1f;
     public int time = 1;
-
-    private float RotationSpeed = 10f;
 
     private Rigidbody rb;
     private ConstantForce piew;
@@ -54,26 +52,23 @@ public class PlayerController : MonoBehaviour
         PlayerHp += gamblingScript.UpgrHp;
         PlayerDmg += gamblingScript.UpgrDmg;
 
-
-
         if (PlayerHp == 0)
         {
             piew.enabled = true;
-        }
-
-         
-
+        }    
     }
+
     private void OnTriggerStay(Collider other)
     {
-        
-        if (Input.GetMouseButtonDown(0)) 
-        {         
+
+        if (Input.GetMouseButtonDown(0))
+        {
             if (other.tag == "Skull")
-            doot.health-- ;
-            
+            {
+                doot.health--;
             }
         }
-    }
+    }       
+}
 
 
