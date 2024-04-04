@@ -27,6 +27,6 @@ public class HpDisplay : MonoBehaviour
 
         
 
-        playerHpDis.text = "Hp: " + PlayerC.PlayerHp;
+        playerHpDis.text = "Hp: " + PlayerController.PlayerHp;
     }
 }

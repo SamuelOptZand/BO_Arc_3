@@ -17,7 +17,7 @@ public class gambaling : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.G) && Wallet > 5)
+        if (Input.GetKeyUp(KeyCode.G) && Wallet > 5)
         {
             int ran = UnityEngine.Random.Range(0, 100);
             Debug.Log(ran);
@@ -51,12 +51,12 @@ public class gambaling : MonoBehaviour
             else
             {
                 Debug.Log("95-100");
-                PlayerC.PlayerHp = 0;
+                PlayerController.PlayerHp = 0;
             }
         }
         else 
         {
-            Debug.Log("not enough money!!");
+            //Debug.Log("not enough money!!");
         }
     }
 }

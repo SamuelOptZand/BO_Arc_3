@@ -48,9 +48,9 @@ public class EnemyAi : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             AudioSource.PlayClipAtPoint(_clip, transform.position);
-            PC.PlayerHp--;
+            PlayerController.PlayerHp = PlayerController.PlayerHp - 1;
             Debug.Log("player health is now" );
-            Debug.Log(PC.PlayerHp);
+            Debug.Log(PlayerController.PlayerHp);
 
             Destroy(gameObject);
 

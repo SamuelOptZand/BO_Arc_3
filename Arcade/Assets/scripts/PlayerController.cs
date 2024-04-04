@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,16 +10,17 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
+    
     private Vector3 moveDirection;
     [SerializeField] private float speed = 50f;
-    public float PlayerHp = 10f;
+    public static float PlayerHp = 10f;
     public float PlayerDmg = 1f;
     private float RotationSpeed = 10f;
     [SerializeField] private GameObject skull;
     [SerializeField] private GameObject gambling;
     private gambaling gamblingScript;
     private EnemyAi doot;
-
+    public List<GameObject> lisySkull = new List<GameObject>();
     public int time = 1;
 
     private Rigidbody rb;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         doot = skull.GetComponent<EnemyAi>();
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
