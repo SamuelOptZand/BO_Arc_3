@@ -1411,11 +1411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684bbe826207e8542a24883a7c4bb637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountEnemysSpawned: 5
   skull: {fileID: 5944625476538159722, guid: 59f3e7b803dd18348a6c244a4128e796, type: 3}
-  time: 1
-  wave: 0
-  player: {fileID: 0}
+  player: {fileID: 3420928692496996552, guid: ce144025b04776443957d8a54fd23906, type: 3}
+  dede: 0
 --- !u!1 &1523311708
 GameObject:
   m_ObjectHideFlags: 0

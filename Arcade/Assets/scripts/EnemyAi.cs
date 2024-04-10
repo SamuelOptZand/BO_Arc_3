@@ -43,14 +43,14 @@ public class EnemyAi : MonoBehaviour
 
     private void OnTriggerEnter(Collider other )
     {
-        Debug.Log("object enter");
+        //Debug.Log("object enter");
 
         if (other.transform.CompareTag("Player"))
         {
             AudioSource.PlayClipAtPoint(_clip, transform.position);
-            //PlayerController.PlayerHp = PlayerController.PlayerHp - 1;
-            Debug.Log("player health is now" );
-            Debug.Log(PlayerController.PlayerHp);
+            PlayerController.PlayerHp = PlayerController.PlayerHp - 1;
+           // Debug.Log("player health is now" );
+            //Debug.Log(PlayerController.PlayerHp);
 
             Destroy(gameObject);
 

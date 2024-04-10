@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
@@ -18,15 +19,16 @@ public class PlayerController : MonoBehaviour
     private float RotationSpeed = 10f;
     [SerializeField] private GameObject skull;
     [SerializeField] private GameObject gambling;
-    private GameObject ResetSkulls;
+    private GameObject[] ResetSkulls;
     private gambaling gamblingScript;
     private EnemyAi doot;
     public List<GameObject> lisySkull = new List<GameObject>();
     public int time = 1;
-
+    private wavespawner wavespawner;
     private Rigidbody rb;
     private ConstantForce piew;
-
+    public static int count = 0;
+    public bool dede = false;
     void Start()
     {
 
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    async void FixedUpdate()
     {
 
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -57,30 +59,45 @@ public class PlayerController : MonoBehaviour
         PlayerHp += gamblingScript.UpgrHp;
         PlayerDmg += gamblingScript.UpgrDmg;
 
-        if (PlayerHp == 0)
+        if (PlayerHp <= 0)
         {
             piew.enabled = true;
-        }    
+        }
 
-        if(Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             Destroy(GameObject.FindGameObjectWithTag("Skull"));
-            Debug.Log("all skulls killed");
+
+            Debug.Log("player sees" + dede);
         }
 
         if (transform.position.y > 30)
         {
+            transform.position = new Vector3(0f, 0f, 50f);
+            wavespawner.count = wavespawner.amountEnemysSpawned;
             piew.enabled = false;
-            while (bb)
-            {
-                Destroy(GameObject.FindGameObjectWithTag("Skull"));
-                ResetSkulls = GameObject.FindGameObjectWithTag("Skull");
+            dede = true;
+            wavespawner.time = 0;
 
+            wavespawner.wave = 0;
+            ResetSkulls = GameObject.FindGameObjectsWithTag("Skull");
+            for (int i = 0; i < ResetSkulls.Length; i++)
+            {
+                Destroy(ResetSkulls[i]);
             }
-        
+            PlayerHp = 10;
+            PlayerDmg = 10;
+
+            StartCoroutine(finishingTouch());
+            wavespawner.time = 1;
+                dede = false;
+                Debug.Log("reset");
+            
            
+
+
         }
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -93,7 +110,29 @@ public class PlayerController : MonoBehaviour
                 doot.health--;
             }
         }
-    }       
+    }
+    IEnumerator finishingTouch()
+    {
+        int num = 0;
+        while (true)
+        {
+            num ++;
+            Debug.Log (num);
+            Debug.Log("finishing reset");
+            yield return new WaitForSeconds(1);
+            for (int i = 0; i < ResetSkulls.Length; i++)
+            {
+                Destroy(ResetSkulls[i]);
+            }
+            if (num == 2)
+            {
+                transform.position = new Vector3(1f, 1f, 0.5f);
+                Destroy(GameObject.FindGameObjectWithTag("Skull"));
+                break;
+            }
+        }
+    }
 }
+
 
 
