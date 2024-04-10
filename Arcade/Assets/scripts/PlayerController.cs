@@ -62,27 +62,25 @@ public class PlayerController : MonoBehaviour
             piew.enabled = true;
         }    
 
-        if(Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.RightShift))
         {
             Destroy(GameObject.FindGameObjectWithTag("Skull"));
+            Debug.Log("all skulls killed");
         }
 
         if (transform.position.y > 30)
         {
+            piew.enabled = false;
             while (bb)
             {
-                
-                bb = false;
+                Destroy(GameObject.FindGameObjectWithTag("Skull"));
+                ResetSkulls = GameObject.FindGameObjectWithTag("Skull");
+
             }
-            
-            ResetSkulls =  GameObject.FindGameObjectWithTag("Skull");
-            piew.enabled = false;
-            Destroy(GameObject.FindGameObjectWithTag("Skull"));
+        
+           
         }
-        if(ResetSkulls = null)
-        {
-            
-        }
+        
     }
 
     private void OnTriggerStay(Collider other)

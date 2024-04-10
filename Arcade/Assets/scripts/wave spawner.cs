@@ -18,12 +18,14 @@ public class wavespawner : MonoBehaviour
     private int waveLocationZ2;
     [SerializeField] private GameObject player;
     private PlayerController PC;
-    private bool waawa = true;
-    private GameObject kill;
+    private bool waawa = false;
+    private Array kill;
+    private bool spawning = false;
 
     void Start()
     {
         PC = player.GetComponent<PlayerController>();
+        kill = null;
     }
     void Update()
     {
@@ -33,13 +35,18 @@ public class wavespawner : MonoBehaviour
         waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
 
         amountEnemysSpawned = 2 * wave;
-
-        kill = GameObject.FindGameObjectWithTag("Skull");
-        if(kill != null)
+       kill = GameObject.FindGameObjectsWithTag("Skull");
+        if (kill.Length == 0 && spawning == false)
         {
             waawa = true;
         }
-        if (waawa = true && Input.GetKeyUp(KeyCode.LeftShift))
+        else
+        {
+            waawa = false;
+            Debug.Log(kill);
+        }
+   
+        if (waawa == true && Input.GetKeyUp(KeyCode.LeftShift))
             {
                 wave++;
                 StartCoroutine(spawnUnit());
@@ -55,7 +62,7 @@ public class wavespawner : MonoBehaviour
 
         while (true)
         {
-            waawa = false;
+            spawning = true;
             yield return new WaitForSeconds(time);
 
             Vector3 randomPos = new Vector3(waveLocationX, 2, waveLocationZ);
@@ -66,7 +73,7 @@ public class wavespawner : MonoBehaviour
 
             if (count == amountEnemysSpawned) 
             {
-               
+               spawning = false;
                 break;
             }  
         }
