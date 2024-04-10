@@ -3,11 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class wavespawner : MonoBehaviour
 {
-    public int amountEnemysSpawned = 5;
+    public int amountEnemysSpawned = 2;
     [SerializeField] private GameObject skull;
     public int time = 1;
     public int wave = 0;
@@ -17,6 +18,8 @@ public class wavespawner : MonoBehaviour
     private int waveLocationZ2;
     [SerializeField] private GameObject player;
     private PlayerController PC;
+    private bool waawa = true;
+    private GameObject kill;
 
     void Start()
     {
@@ -29,11 +32,19 @@ public class wavespawner : MonoBehaviour
         waveLocationX2 = UnityEngine.Random.Range(-1, 1);
         waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        amountEnemysSpawned = 2 * wave;
+
+        kill = GameObject.FindGameObjectWithTag("Skull");
+        if(kill != null)
         {
-            StartCoroutine(spawnUnit());
-            Debug.Log(PlayerController.PlayerHp);
+            waawa = true;
         }
+        if (waawa = true && Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                wave++;
+                StartCoroutine(spawnUnit());
+
+            }
         
     }
 
@@ -44,36 +55,24 @@ public class wavespawner : MonoBehaviour
 
         while (true)
         {
+            waawa = false;
             yield return new WaitForSeconds(time);
 
             Vector3 randomPos = new Vector3(waveLocationX, 2, waveLocationZ);
             Instantiate(skull, randomPos, transform.rotation);
             Debug.Log("enemyspawned");
-            Debug.Log(PlayerController.PlayerHp);
+            
             count++;
 
             if (count == amountEnemysSpawned) 
             {
+               
                 break;
             }  
         }
        
     }
-
-    IEnumerator spawnUnit2()
-    {
-        int count = 0;
-        while (true)
-        {
-            yield return new WaitForSeconds(time);
-            Vector3 randomPos = new Vector3(waveLocationX2, 0, waveLocationZ2);
-            Instantiate(skull, randomPos, transform.rotation);
-            count++;
-
-            if (count == amountEnemysSpawned)
-            {
-                break;
-            }
-        }
-    }
+        
+        
+    
 }

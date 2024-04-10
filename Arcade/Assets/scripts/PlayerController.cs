@@ -10,7 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    private bool bb = true;
     private Vector3 moveDirection;
     [SerializeField] private float speed = 50f;
     public static float PlayerHp = 10f;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float RotationSpeed = 10f;
     [SerializeField] private GameObject skull;
     [SerializeField] private GameObject gambling;
+    private GameObject ResetSkulls;
     private gambaling gamblingScript;
     private EnemyAi doot;
     public List<GameObject> lisySkull = new List<GameObject>();
@@ -60,6 +61,28 @@ public class PlayerController : MonoBehaviour
         {
             piew.enabled = true;
         }    
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Skull"));
+        }
+
+        if (transform.position.y > 30)
+        {
+            while (bb)
+            {
+                
+                bb = false;
+            }
+            
+            ResetSkulls =  GameObject.FindGameObjectWithTag("Skull");
+            piew.enabled = false;
+            Destroy(GameObject.FindGameObjectWithTag("Skull"));
+        }
+        if(ResetSkulls = null)
+        {
+            
+        }
     }
 
     private void OnTriggerStay(Collider other)
