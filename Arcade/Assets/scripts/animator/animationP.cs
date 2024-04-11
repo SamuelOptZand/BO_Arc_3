@@ -18,6 +18,11 @@ public class animation : MonoBehaviour
         {
             ani.SetTrigger("Walk");
         }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            ani.SetTrigger("Punch");
+            //Debug.Log("Pressed left-click");
+        }
         else
         {
             ani.SetTrigger("Idle");

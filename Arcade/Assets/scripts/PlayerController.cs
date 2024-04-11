@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     private Vector3 moveDirection;
+
     [SerializeField] private float speed = 50f;
     [SerializeField] private float rotSpeed = 50f;
     [SerializeField] private GameObject gambling;
@@ -19,10 +20,20 @@ public class PlayerController : MonoBehaviour
 
     private float RotationSpeed = 10f;
 
+    [SerializeField] private GameObject skull;
+    [SerializeField] private GameObject gambling;
+    private GameObject ResetSkulls;
+    private gambaling gamblingScript;
+    private EnemyAi doot;
+    public List<GameObject> lisySkull = new List<GameObject>();
+    public int time = 1;
+
     private Rigidbody rb;
     private ConstantForce piew;
     void Start()
     {
+
+        doot = skull.GetComponent<EnemyAi>();
         rb = gameObject.GetComponent<Rigidbody>();
 
         moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -53,8 +64,27 @@ public class PlayerController : MonoBehaviour
         if (PlayerHp == 0)
         {
             piew.enabled = true;
+        }    
+
+        if(Input.GetKeyDown(KeyCode.RightShift))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Skull"));
+            Debug.Log("all skulls killed");
         }
 
-    }
+        if (transform.position.y > 30)
+        {
+            piew.enabled = false;
+            while (bb)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Skull"));
+                ResetSkulls = GameObject.FindGameObjectWithTag("Skull");
 
+            }
+        }
+        
+    }
+      
 }
+
+

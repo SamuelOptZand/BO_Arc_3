@@ -1,99 +1,85 @@
-using JetBrains.Annotations;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using JetBrains.Annotations;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//using System.Text;
+//using Unity.VisualScripting;
+//using UnityEngine;
 
-public class wavespawner : MonoBehaviour
-{
-    public int amountEnemysSpawned = 5;
-    public GameObject skull;
-    public int time = 1;
-    public int wave = 0;
-    private int waveLocationX;
-    private int waveLocationZ;
-    private int waveLocationX2;
-    private int waveLocationZ2;
+//public class wavespawner : MonoBehaviour
+//{
+//    public int amountEnemysSpawned = 2;
+//    [SerializeField] private GameObject skull;
+//    public int time = 1;
+//    public int wave = 0;
+//    private int waveLocationX;
+//    private int waveLocationZ;
+//    private int waveLocationX2;
+//    private int waveLocationZ2;
+//    [SerializeField] private GameObject player;
+//    private PlayerController PC;
+//    private bool waawa = false;
+//    private Array kill;
+//    private bool spawning = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        waveLocationX = UnityEngine.Random.Range(-1, 1);
-        waveLocationZ = UnityEngine.Random.Range(-1, 1);
-        waveLocationX2 = UnityEngine.Random.Range(-1, 1);
-        waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
-    }
-    // Update is called once per frame
-    void Update()
-    {
+//    void Start()
+//    {
+//        PC = player.GetComponent<PlayerController>();
+//        kill = null;
+//    }
+//    void Update()
+//    {
+//        waveLocationX = UnityEngine.Random.Range(-10, 10);
+//        waveLocationZ = UnityEngine.Random.Range(15, 25);
+//        waveLocationX2 = UnityEngine.Random.Range(-1, 1);
+//        waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
+
+//        amountEnemysSpawned = 2 * wave;
+//        kill = GameObject.FindGameObjectsWithTag("Skull");
+//        if (kill.Length == 0 && spawning == false)
+//        {
+//            //waawa = true;
+//        }
+//        else
+//        {
+//            waawa = false;
+//            Debug.Log(kill);
+//        }
+   
+//        if (waawa == true && Input.GetKeyUp(KeyCode.LeftShift))
+//        {
+//                wave++;
+//                StartCoroutine(spawnUnit());
+
+//        }  
         
-
-        amountEnemysSpawned = 5 * wave;
-        
-
-        //if(button pressed && wave < 10)
-        StartCoroutine(spawnUnit());
-        //else
-        
-            amountEnemysSpawned = amountEnemysSpawned / 2;
-            StartCoroutine(spawnUnit2());
-            StartCoroutine(spawnUnit());
-
-    }
-
-    IEnumerator spawnUnit() {
+//    }
+//    IEnumerator spawnUnit()
+//    IEnumerator spawnUnit2()
+//        Debug.Log("spawning units");
+//        int count = 0;
 
 
+//        while (true)
+//            spawning = true;
 
-        int count = 0;
-        while (true)
-        {
-
+//            yield return new WaitForSeconds(time);
+//            Vector3 randomPos = new Vector3(waveLocationX, 2, waveLocationZ);
+//            Vector3 randomPos = new Vector3(waveLocationX2, 0, waveLocationZ2);
+//            Debug.Log("enemyspawned");
             
-            yield return new WaitForSeconds(time);
 
-            Vector3 randomPos = new Vector3(waveLocationX, 0, waveLocationZ);
-            Instantiate(skull, randomPos, transform.rotation);
-
-            count++;
-
-            if (count == amountEnemysSpawned) {
-                break;
-                
-            }
-            
-        }
-        wave++;
-
-
-    }
-
-    IEnumerator spawnUnit2()
-    {
-
-
-
-        int count = 0;
-        while (true)
-        {
-
-
-            yield return new WaitForSeconds(time);
-
-            Vector3 randomPos = new Vector3(waveLocationX2, 0, waveLocationZ2);
-            Instantiate(skull, randomPos, transform.rotation);
-
-            count++;
-
-            if (count == amountEnemysSpawned)
-            {
-                break;
-
-            }
-
-        }
+//            count++;
+//            if (count == amountEnemysSpawned) 
+//            if (count == amountEnemysSpawned)
+//               spawning = false;
+//            {
+//            }  
+//        }
+       
+//    }
+//        }
         
-
-
-    }
-}
+    
+//}
+//}

@@ -6,10 +6,15 @@ public class gambaling : MonoBehaviour
     [SerializeField] public float UpgrDmg = 0;
     [SerializeField] private GameObject player;
     private PlayerController PlayerC;
+
+    [SerializeField] private GameObject GamblePromt;
+    private GamblePromt Gscript;
+
     void Start()
     {
         Debug.Log("gambaling has started");
         PlayerC = player.GetComponent<PlayerController>();
+        Gscript = GamblePromt.GetComponent<GamblePromt>();
     }
 
     void Update()
@@ -51,6 +56,5 @@ public class gambaling : MonoBehaviour
             }
 
         }
-
     }
 }
