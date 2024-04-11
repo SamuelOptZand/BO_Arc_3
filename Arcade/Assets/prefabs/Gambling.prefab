@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2264787452885762776}
   - component: {fileID: 6036056069691095342}
   - component: {fileID: 4064156109881315300}
+  - component: {fileID: -2277764594269116166}
   m_Layer: 0
   m_Name: Gambling
   m_TagString: Untagged
@@ -121,4 +122,18 @@ MonoBehaviour:
   Wallet: 0
   UpgrHp: 0
   UpgrDmg: 0
-  player: {fileID: 0}
+  player: {fileID: 3420928692496996552, guid: ce144025b04776443957d8a54fd23906, type: 3}
+--- !u!114 &-2277764594269116166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328494014623661256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff82a0c2109ab4348890daac30b5e787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamble: {fileID: 6328494014623661256}
+  player: {fileID: 3420928692496996552, guid: ce144025b04776443957d8a54fd23906, type: 3}

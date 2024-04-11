@@ -43,8 +43,6 @@ public class EnemyAi : MonoBehaviour
 
     private void OnTriggerEnter(Collider other )
     {
-        
-
         if (other.transform.CompareTag("Player"))
         {
             AudioSource.PlayClipAtPoint(_clip, transform.position);
