@@ -12,10 +12,18 @@ public class wavespawner : MonoBehaviour
     [SerializeField] public GameObject skull;
     public static int time = 1;
     public static int wave = 0;
-    private int waveLocationX;
-    private int waveLocationZ;
-    private int waveLocationX2;
-    private int waveLocationZ2;
+    private int waveLocationXfront;
+    private int waveLocationZfront;
+    private int waveLocationXright;
+    private int waveLocationZright;
+    private int waveLocationXleft;
+    private int waveLocationZleft;
+    private int waveLocationXback;
+    private int waveLocationZback;
+
+    private int wutWall;
+    private int waveLocationx;
+    private int waveLocationz;
     [SerializeField] private GameObject player;
     private PlayerController PC;
     private bool waawa = false;
@@ -31,12 +39,19 @@ public class wavespawner : MonoBehaviour
     }
     void Update()
     {
-        waveLocationX = UnityEngine.Random.Range(-10, 10);
-        waveLocationZ = UnityEngine.Random.Range(15, 25);
-        waveLocationX2 = UnityEngine.Random.Range(-1, 1);
-        waveLocationZ2 = UnityEngine.Random.Range(-1, 1);
+        waveLocationXfront = UnityEngine.Random.Range(-30, 26);
+        waveLocationZfront = UnityEngine.Random.Range(24, 20);
+
+        waveLocationXright = UnityEngine.Random.Range(26, 22);
+        waveLocationZright = UnityEngine.Random.Range(24, -24);
+
+        waveLocationZback = UnityEngine.Random.Range(-24, -20);
+        waveLocationXback = UnityEngine.Random.Range(26, 32);
+
+        waveLocationZleft = UnityEngine.Random.Range(-24, 24);
+        waveLocationXleft = UnityEngine.Random.Range(32, 30);
       
-        amountEnemysSpawned = 20 * wave;
+        amountEnemysSpawned = 2 * wave;
        kill = GameObject.FindGameObjectsWithTag("Skull");
         if (kill.Length == 0 && spawning == false)
         {
@@ -54,10 +69,7 @@ public class wavespawner : MonoBehaviour
                 StartCoroutine(spawnUnit());
                 
             }
-        if (PC.dede == true)
-        {
-            StopCoroutine(spawnUnit());
-        }
+       
     }
 
     public IEnumerator spawnUnit()
@@ -67,11 +79,29 @@ public class wavespawner : MonoBehaviour
        
         while (PC.dede == false)
         {
-            
+            wutWall = UnityEngine.Random.RandomRange(0, 100);
+            if(wutWall >= 25)
+            {
+                waveLocationx = waveLocationXfront;
+                waveLocationz = waveLocationZfront;
+            }else if(wutWall >= 50)
+            {
+                waveLocationx = waveLocationXleft;
+                waveLocationz = waveLocationZleft;
+            }else if (wutWall >= 75)
+            {
+                waveLocationx = waveLocationXright;
+                waveLocationz = waveLocationZright;
+            }
+            else
+            {
+                waveLocationx = waveLocationXback;
+                waveLocationz = waveLocationZback;
+            }
             spawning = true;
             yield return new WaitForSeconds(time);
 
-            Vector3 randomPos = new Vector3(waveLocationX, 2, waveLocationZ);
+            Vector3 randomPos = new Vector3(waveLocationx, 2, waveLocationz);
             Instantiate(skull, randomPos, transform.rotation);
             
             

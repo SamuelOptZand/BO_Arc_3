@@ -64,11 +64,13 @@ public class PlayerController : MonoBehaviour
             piew.enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (wavespawner.spawning = false && Input.GetKey(KeyCode.RightShift))
         {
-            Destroy(GameObject.FindGameObjectWithTag("Skull"));
-
-            Debug.Log("player sees" + dede);
+            ResetSkulls = GameObject.FindGameObjectsWithTag("Skull");
+            for (int i = 0; i < ResetSkulls.Length; i++)
+            {
+                Destroy(ResetSkulls[i]);
+            }
         }
 
         if (transform.position.y > 30)
@@ -92,25 +94,12 @@ public class PlayerController : MonoBehaviour
             wavespawner.time = 1;
                 dede = false;
                 Debug.Log("reset");
-            
-           
-
 
         }
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (other.tag == "Skull")
-            {
-                doot.health--;
-            }
-        }
-    }
+   
     IEnumerator finishingTouch()
     {
         int num = 0;
